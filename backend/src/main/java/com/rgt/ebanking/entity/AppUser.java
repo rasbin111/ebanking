@@ -1,4 +1,4 @@
-package com.example.auth_demo.entity;
+package com.rgt.ebanking.entity;
 
 import java.util.Collection;
 import java.util.List;
