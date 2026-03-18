@@ -1,0 +1,25 @@
+info:
+  name: upload avatar
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: http://localhost:8080/users/2/upload/avatar
+  body:
+    type: multipart-form
+    data:
+      - name: file
+        type: file
+        value:
+          - /home/sishir_gaire/Pictures/DALL·E 2025-03-03 15.49.49 - A vibrant and modern GitHub profile image for a developer named Rasbin Thapa, who works at Learnsic and goes by the username 'rasbinsic'. The design s(1).jpg
+  auth:
+    type: basic
+    username: admin
+    password: admin
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,12 @@
+opencollection: 1.0.0
+info:
+  name: "Ebanking"
+  type: workspace
+
+collections:
+  - name: "User"
+    path: "collections/User"
+
+specs:
+
+docs: ''

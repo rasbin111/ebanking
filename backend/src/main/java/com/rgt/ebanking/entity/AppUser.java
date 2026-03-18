@@ -29,6 +29,15 @@ public class AppUser implements UserDetails {
     private String email;
     private String gender;
     private String role;
+    private String avatarPath;
+
+    public String getAvatarPath() {
+        return avatarPath;
+    }
+
+    public void setAvatarPath(String avatarPath) {
+        this.avatarPath = avatarPath;
+    }
 
     private String password;
 

@@ -1,0 +1,30 @@
+info:
+  name: create user
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://localhost:8080/users/
+  body:
+    type: json
+    data: |-
+      {
+        "username": "rabin",
+        "password": "admin",
+        "firstName": "rabin",
+        "lastName": "thapa",
+        "email": "rabin@email.com",
+        "gender": "male",
+        "role": "admin"
+      }
+  auth:
+    type: basic
+    username: admin
+    password: admin
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
