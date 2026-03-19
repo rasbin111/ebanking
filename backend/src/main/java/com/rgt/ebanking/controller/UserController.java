@@ -18,14 +18,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.rgt.ebanking.entity.AppUser;
-import com.rgt.ebanking.service.AppUserService;
+import com.rgt.ebanking.service.AppUserDetailsService;
 
 @Controller
 @RequestMapping("/users")
-public class AppUserController {
+public class UserController {
     
     @Autowired
-    private AppUserService appUserService;
+    private AppUserDetailsService appUserService;
 
     @GetMapping("/")
     public @ResponseBody List<AppUser> getAllUsers(){
@@ -43,10 +43,10 @@ public class AppUserController {
         }
     }
 
-    @PostMapping("/")
-    public ResponseEntity<AppUser> createUser(@RequestBody AppUser user){
-        return new ResponseEntity<AppUser>(appUserService.creatUser(user), HttpStatus.CREATED);
-    }
+    // @PostMapping("/")
+    // public ResponseEntity<AppUser> createUser(@RequestBody AppUser user){
+    //     return new ResponseEntity<AppUser>(appUserService.creatUser(user), HttpStatus.CREATED);
+    // }
 
     @PutMapping("/{id}")
     public ResponseEntity<AppUser> updateUser(@PathVariable Long id, @RequestBody AppUser user){

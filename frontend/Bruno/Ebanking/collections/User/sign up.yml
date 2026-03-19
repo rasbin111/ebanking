@@ -1,20 +1,20 @@
 info:
-  name: create user
+  name: sign up
   type: http
   seq: 1
 
 http:
   method: POST
-  url: http://localhost:8080/users/
+  url: http://localhost:8080/api/auth/signup
   body:
     type: json
     data: |-
       {
-        "username": "rabin",
+        "username": "rajan",
         "password": "admin",
         "firstName": "rabin",
         "lastName": "thapa",
-        "email": "rabin@email.com",
+        "email": "rajan@email.com",
         "gender": "male",
         "role": "admin"
       }

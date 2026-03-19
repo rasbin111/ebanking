@@ -21,10 +21,9 @@ import com.rgt.ebanking.entity.AppUser;
 import com.rgt.ebanking.repository.UserRepository;
 import com.rgt.ebanking.validation.ImageValidator;
 
-import jakarta.transaction.Transactional;
 
 @Service
-public class AppUserService implements UserDetailsService {
+public class AppUserDetailsService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
@@ -35,11 +34,11 @@ public class AppUserService implements UserDetailsService {
     private ImageValidator imageValidator;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
+    public UserDetails loadUserByUsername(String usernameString) throws UsernameNotFoundException{
+        return userRepository.findByUsername(usernameString)
+                        .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + usernameString));
     }
-
+    
     public List<AppUser> getAllUsers(){
         return userRepository.findAll();
     }
@@ -59,7 +58,7 @@ public class AppUserService implements UserDetailsService {
         Optional<AppUser> existingUser = userRepository.findByEmail(user.getEmail());
 
         if (existingUser.isPresent()){
-            return existingUser.get();
+            return null;
         }
 
         String encodedPassword = passwordEncoder.encode(user.getPassword());
@@ -116,4 +115,6 @@ public class AppUserService implements UserDetailsService {
         user.setAvatarPath(uploadDirName + "/" + filename);
         userRepository.save(user);
     }
+
+
 }

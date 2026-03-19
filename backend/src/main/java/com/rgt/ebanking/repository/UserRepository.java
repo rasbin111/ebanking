@@ -12,6 +12,7 @@ import com.rgt.ebanking.entity.AppUser;
 public interface UserRepository extends JpaRepository<AppUser, Long>{
     Optional<AppUser> findByUsername(String username);
     Optional<AppUser> findByEmail(String email);
+    boolean existsByUsername(String username);
 
     /* 
     Added here to tell my future self that we can add sql query in this format 

@@ -19,3 +19,6 @@ spring:
       max-file-size: 5MB
       max-request-size: 10MB # Max request size (total of all files in a request)
 
+jwt:
+  secret: thisIsMysecregtfrdesww233eggtffeeddgkjjhhtdhttebd54ndhdhfhhhshs8877465sbbdd
+  expiration: 3600000
