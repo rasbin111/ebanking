@@ -4,7 +4,7 @@ import { Card, Text, Title, Grid, Button, Stack, Group } from '@mantine/core';
 const Dashboard = () => {
   return (
     <div>
-      <Grid>
+      <Grid p={16}>
         <Grid.Col span={12}>
           <Title order={2} style={{textAlign: "center"}}>Banking Dashboard</Title>
         </Grid.Col>
