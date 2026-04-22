@@ -21,7 +21,7 @@ import com.rgt.ebanking.entity.AppUser;
 import com.rgt.ebanking.service.AppUserDetailsService;
 
 @Controller
-@RequestMapping("/users")
+@RequestMapping("api/v1/users")
 public class UserController {
     
     @Autowired

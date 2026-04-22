@@ -34,9 +34,9 @@ public class AppUserDetailsService implements UserDetailsService {
     private ImageValidator imageValidator;
 
     @Override
-    public UserDetails loadUserByUsername(String usernameString) throws UsernameNotFoundException{
-        return userRepository.findByUsername(usernameString)
-                        .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + usernameString));
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        return userRepository.findByEmail(email)
+        .orElseThrow(() -> new UsernameNotFoundException("No user found iwth email"));
     }
     
     public List<AppUser> getAllUsers(){

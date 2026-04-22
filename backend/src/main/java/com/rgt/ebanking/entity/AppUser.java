@@ -21,63 +21,67 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "app_users")
-public class AppUser implements UserDetails {
-
+@Table(name="app_users")
+public class AppUser implements  UserDetails{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    
-    @Column(unique = true)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private int Id;
+
+    @Column(unique=true)
     private String username;
+
+    @Column(unique=true, nullable=false)
+    private String email;
 
     private String firstName;
     private String middleName;
     private String lastName;
 
-    @Column(unique = true)
-    private String email;
-
     private String password;
-    
+
     private String gender;
     private String role;
+
     private String avatarPath;
 
     @Override
     @JsonIgnore
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        // 1. Check if the role field itself is null
-        if (this.role == null || this.role.trim().isEmpty()) {
-            // Return a default role so it doesn't crash
+    public Collection<? extends  GrantedAuthority> getAuthorities(){
+        if (this.role == null || this.role.trim().isEmpty()){
             return List.of(new SimpleGrantedAuthority("NORMAL_USER"));
         }
-
-        // 2. Spring Security expectations:
-        // If your DB has "ADMIN", SimpleGrantedAuthority should usually be "ROLE_ADMIN"
         String roleName = this.role.startsWith("ROLE_") ? this.role : "ROLE_" + this.role;
-
+        
         return List.of(new SimpleGrantedAuthority(roleName));
     }
 
     @Override
-    public boolean isAccountNonExpired() {
-        return true; // Set to true so the account never "expires"
+    public String getUsername(){
+        return this.email;
+    }
+
+    public String getRealusername(){
+        return this.username;
     }
 
     @Override
-    public boolean isAccountNonLocked() {
-        return true; // Set to true so the account is never "locked"
+    public boolean isAccountNonExpired(){
+        return true;
     }
 
     @Override
-    public boolean isCredentialsNonExpired() {
-        return true; // Set to true so passwords never "expire"
+    public boolean isAccountNonLocked(){
+
+        return true;
+    }
+    
+    @Override
+    public boolean isCredentialsNonExpired(){
+        return true;
     }
 
     @Override
-    public boolean isEnabled() {
-        return true; // Set to true so the user is "active"
+    public boolean isEnabled(){
+        return true;
     }
-
 }
