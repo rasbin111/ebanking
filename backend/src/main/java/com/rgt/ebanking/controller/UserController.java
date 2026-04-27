@@ -65,11 +65,11 @@ public class UserController {
         }
     }
 
-    @PostMapping("/{id}/upload/avatar")
-    public ResponseEntity<String> uploadAvatar(@PathVariable Long id,  @RequestParam("file") MultipartFile file){
+    // @PostMapping("/{id}/upload/avatar")
+    // public ResponseEntity<String> uploadAvatar(@PathVariable Long id,  @RequestParam("file") MultipartFile file){
         
-        appUserService.uploadAvatar(file, id);
-        return ResponseEntity.ok("Upload Successful");
-    }
+    //     appUserService.uploadAvatar(file, id);
+    //     return ResponseEntity.ok("Upload Successful");
+    // }
 
 }

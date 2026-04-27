@@ -9,11 +9,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,9 +26,11 @@ import lombok.Setter;
 @Entity
 @Table(name="app_users")
 public class AppUser implements  UserDetails{
+
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private int Id;
+    @Column(name="user_id")
+    private int userId;
 
     @Column(unique=true)
     private String username;
@@ -42,7 +47,8 @@ public class AppUser implements  UserDetails{
     private String gender;
     private String role;
 
-    private String avatarPath;
+    @OneToOne(mappedBy="appUser", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+    private Profile profile;
 
     @Override
     @JsonIgnore
