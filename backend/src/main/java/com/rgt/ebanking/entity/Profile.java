@@ -32,7 +32,7 @@ public class Profile {
     private String avatarPath;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="user_id")
+    @JoinColumn(name="user_id", referencedColumnName="user_id")
     private AppUser appUser;
 
 

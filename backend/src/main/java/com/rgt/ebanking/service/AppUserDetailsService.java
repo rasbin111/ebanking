@@ -26,6 +26,7 @@ public class AppUserDetailsService implements UserDetailsService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+
     // @Autowired
     // private ImageValidator imageValidator;
 

@@ -4,6 +4,7 @@ import com.rgt.ebanking.entity.AppUser;
 
 public class UserCreatedEvent {
     private final AppUser user;
+
     public UserCreatedEvent(AppUser user) {
         this.user = user;
     }
@@ -11,4 +12,5 @@ public class UserCreatedEvent {
     public AppUser getUser() {
         return user;
     }
+
 }
