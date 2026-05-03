@@ -16,7 +16,6 @@ public class UserProfileService {
         try {
             return profileRepository.save(profile);
         } catch (Exception e) {
-            e.printStackTrace();
             throw e;       
         }
     }
